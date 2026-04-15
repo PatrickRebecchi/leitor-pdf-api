@@ -1,6 +1,6 @@
 <div class="container">
   <h2>Lista de PDFs</h2>
-  <table *ngIf="pdfs.length > 0">
+  <table *ngIf="pdfs().length > 0">
     <thead>
       <tr>
         <th>Nome</th>
@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let pdf of pdfs">
+      <tr *ngFor="let pdf of pdfs()">
         <td>{{ pdf.nome }}</td>
         <td><a [href]="pdf.link" target="_blank">Acessar</a></td>
         <td>{{ pdf.adicionadoPor }}</td>
@@ -18,5 +18,5 @@
       </tr>
     </tbody>
   </table>
-  <p *ngIf="pdfs.length === 0">Nenhum PDF adicionado ainda.</p>
+  <p *ngIf="pdfs().length === 0">Nenhum PDF adicionado ainda.</p>
 </div>

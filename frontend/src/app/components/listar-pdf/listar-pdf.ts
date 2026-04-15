@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PdfService, Pdf } from '../../services/pdf';
 
@@ -11,11 +11,15 @@ import { PdfService, Pdf } from '../../services/pdf';
 })
 export class ListarPdfComponent implements OnInit {
   private pdfService = inject(PdfService);
-  pdfs: Pdf[] = [];
+  pdfs = signal<Pdf[]>([]);
 
   ngOnInit() {
+    this.carregarPdfs();
+  }
+
+  carregarPdfs() {
     this.pdfService.listar().subscribe((data) => {
-      this.pdfs = data;
+      this.pdfs.set(data);
     });
   }
 }

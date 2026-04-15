@@ -1,16 +1,18 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { PdfService } from '../../services/pdf';
 
 @Component({
   selector: 'app-adicionar-pdf',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './adicionar-pdf.html',
   styleUrl: './adicionar-pdf.css',
 })
 export class AdicionarPdfComponent {
   private pdfService = inject(PdfService);
+  private router = inject(Router);
 
   nome = '';
   link = '';
@@ -26,7 +28,7 @@ export class AdicionarPdfComponent {
         this.nome = '';
         this.link = '';
         this.adicionadoPor = '';
-        alert('PDF adicionado com sucesso!');
+        this.router.navigate(['/']);
       });
     }
   }

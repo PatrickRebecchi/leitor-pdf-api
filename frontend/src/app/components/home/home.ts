@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { PdfService, Pdf } from '../../services/pdf';
@@ -12,11 +12,18 @@ import { PdfService, Pdf } from '../../services/pdf';
 })
 export class HomeComponent implements OnInit {
   private pdfService = inject(PdfService);
-  ultimosPdfs: Pdf[] = [];
+  ultimosPdfs = signal<Pdf[]>([]);
+  erro = signal('');
 
   ngOnInit() {
-    this.pdfService.listarUltimos().subscribe((data) => {
-      this.ultimosPdfs = data;
+    this.pdfService.listarUltimos().subscribe({
+      next: (data) => {
+        this.ultimosPdfs.set(data);
+      },
+      error: (err) => {
+        console.error('Erro ao carregar PDFs:', err);
+        this.erro.set('Erro ao carregar PDFs');
+      }
     });
   }
 }

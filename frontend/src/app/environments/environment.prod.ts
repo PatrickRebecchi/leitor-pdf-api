@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://api.leitopdf.com/api'
+  apiUrl: 'https://leitor-pdf-api.onrender.com/api'
 };

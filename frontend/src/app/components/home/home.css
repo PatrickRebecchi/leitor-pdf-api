@@ -1,0 +1,161 @@
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  color: white;
+  margin-bottom: 40px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 30px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 12px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.btn-primary {
+  background: #4CAF50;
+  color: white;
+}
+
+.btn-secondary {
+  background: white;
+  color: #667eea;
+}
+
+.ultimos-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.pdf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.pdf-card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.pdf-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.pdf-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.pdf-icon svg {
+  width: 35px;
+  height: 35px;
+  color: white;
+}
+
+.pdf-card h3 {
+  font-size: 1.1rem;
+  margin: 0 0 10px 0;
+  color: #333;
+  word-break: break-word;
+}
+
+.pdf-author {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 5px 0;
+}
+
+.pdf-date {
+  color: #999;
+  font-size: 0.85rem;
+  margin-bottom: 15px;
+}
+
+.btn-access {
+  background: #667eea;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.btn-access:hover {
+  background: #5568d3;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 50px 20px;
+  background: #f9f9f9;
+  border-radius: 15px;
+}
+
+.empty-state p {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .pdf-grid {
+    grid-template-columns: 1fr;
+  }
+}

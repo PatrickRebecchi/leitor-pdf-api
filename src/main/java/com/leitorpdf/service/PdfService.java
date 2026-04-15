@@ -29,4 +29,8 @@ public class PdfService {
     public List<Pdf> listarPdfs() {
         return pdfRepository.findAll();
     }
+
+    public List<Pdf> listarUltimos(int limite) {
+        return pdfRepository.findTop6ByOrderByDataCriacaoDesc();
+    }
 }

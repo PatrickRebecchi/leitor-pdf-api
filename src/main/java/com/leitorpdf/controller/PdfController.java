@@ -28,4 +28,9 @@ public class PdfController {
     public ResponseEntity<List<Pdf>> listarPdfs() {
         return ResponseEntity.ok(pdfService.listarPdfs());
     }
+
+    @GetMapping("/ultimos")
+    public ResponseEntity<List<Pdf>> listarUltimos() {
+        return ResponseEntity.ok(pdfService.listarUltimos(6));
+    }
 }

@@ -1,0 +1,31 @@
+<div class="home-container">
+  <header class="hero">
+    <h1>Biblioteca de PDFs</h1>
+    <p>Centralize seus documentos PDF do Google Drive</p>
+    <div class="hero-buttons">
+      <a routerLink="/adicionar" class="btn btn-primary">Adicionar PDF</a>
+      <a routerLink="/listar" class="btn btn-secondary">Ver Todos</a>
+    </div>
+  </header>
+
+  <section class="ultimos-section">
+    <h2>Adicionados Recentemente</h2>
+    <div class="pdf-grid" *ngIf="ultimosPdfs.length > 0">
+      <div class="pdf-card" *ngFor="let pdf of ultimosPdfs">
+        <div class="pdf-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13z"/>
+          </svg>
+        </div>
+        <h3>{{ pdf.nome }}</h3>
+        <p class="pdf-author">Por {{ pdf.adicionadoPor }}</p>
+        <p class="pdf-date">{{ pdf.dataCriacao | date:'dd/MM/yyyy' }}</p>
+        <a [href]="pdf.link" target="_blank" class="btn-access">Acessar</a>
+      </div>
+    </div>
+    <div class="empty-state" *ngIf="ultimosPdfs.length === 0">
+      <p>Nenhum PDF adicionado ainda.</p>
+      <a routerLink="/adicionar" class="btn btn-primary">Adicionar primeiro PDF</a>
+    </div>
+  </section>
+</div>

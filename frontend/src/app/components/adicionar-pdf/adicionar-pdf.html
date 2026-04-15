@@ -1,0 +1,18 @@
+<div class="container">
+  <h2>Adicionar PDF</h2>
+  <form (ngSubmit)="salvar()">
+    <div class="form-group">
+      <label for="nome">Nome do PDF:</label>
+      <input type="text" id="nome" [(ngModel)]="nome" name="nome" required>
+    </div>
+    <div class="form-group">
+      <label for="link">Link do Google Drive:</label>
+      <input type="text" id="link" [(ngModel)]="link" name="link" required>
+    </div>
+    <div class="form-group">
+      <label for="adicionadoPor">Seu nome:</label>
+      <input type="text" id="adicionadoPor" [(ngModel)]="adicionadoPor" name="adicionadoPor" required>
+    </div>
+    <button type="submit">Adicionar PDF</button>
+  </form>
+</div>

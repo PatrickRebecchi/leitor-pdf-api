@@ -13,7 +13,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/api/**")
             .allowedOrigins(
                 "http://localhost:4200",
-                "https://seu-frontend.vercel.app"
+                "https://leitor-pdf-api.vercel.app/"
             )
             .allowedMethods("GET", "POST", "PUT", "DELETE")
             .allowedHeaders("*")

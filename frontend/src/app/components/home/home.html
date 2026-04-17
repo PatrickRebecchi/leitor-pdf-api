@@ -3,8 +3,7 @@
     <h1>Biblioteca de PDFs</h1>
     <p>Centralize seus documentos PDF do Google Drive</p>
     <div class="hero-buttons">
-      <a routerLink="/adicionar" class="btn btn-primary">Adicionar PDF</a>
-      <a routerLink="/listar" class="btn btn-secondary">Ver Todos</a>
+      <a routerLink="/login" class="btn btn-primary">Entrar / Cadastrar</a>
     </div>
   </header>
 
@@ -26,7 +25,6 @@
     </div>
     <div class="empty-state" *ngIf="ultimosPdfs().length === 0 && !erro()">
       <p>Nenhum PDF adicionado ainda.</p>
-      <a routerLink="/adicionar" class="btn btn-primary">Adicionar primeiro PDF</a>
     </div>
   </section>
 </div>

@@ -35,8 +35,8 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  buscar(event: Event) {
-    const value = (event.target as HTMLInputElement).value;
+  buscar(event?: Event) {
+    const value = event ? (event.target as HTMLInputElement).value : this.termoBusca();
     this.termoBusca.set(value);
 
     if (value.trim().length === 0) {

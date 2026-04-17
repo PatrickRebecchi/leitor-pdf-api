@@ -3,7 +3,8 @@
     <h1>Biblioteca de PDFs</h1>
     <p>Centralize seus documentos PDF do Google Drive</p>
     <div class="search-box">
-      <input type="text" placeholder="Buscar PDF por nome ou autor..." [ngModel]="termoBusca()" (ngModelChange)="buscar($event)">
+      <input type="text" placeholder="Buscar PDF por nome ou autor..." [ngModel]="termoBusca()" (ngModelChange)="buscar($event)" (keyup.enter)="buscar()">
+      <button class="search-btn" (click)="buscar($event)">🔍</button>
     </div>
   </header>
 

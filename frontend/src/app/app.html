@@ -3,7 +3,7 @@
   <ng-container *ngIf="estaLogado(); else naoLogado">
     <button class="menu-toggle" (click)="toggleMenu()">☰</button>
     <div class="nav-links" [class.active]="menuAberto">
-      <a routerLink="/" class="nav-btn" (click)="fecharMenu()">Home</a>
+      <a routerLink="/home" class="nav-btn" (click)="fecharMenu()">Home</a>
       <a routerLink="/adicionar" class="nav-btn" (click)="fecharMenu()">Adicionar PDF</a>
       <a routerLink="/listar" class="nav-btn" (click)="fecharMenu()">Listar PDFs</a>
       <a class="nav-btn" (click)="logout()">Sair</a>

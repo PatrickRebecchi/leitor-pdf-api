@@ -25,4 +25,17 @@ public class AuthService {
         
         return Optional.empty();
     }
+
+    public Usuario registro(String username, String password) {
+        if (usuarioRepository.findByUsername(username).isPresent()) {
+            throw new RuntimeException("Usuário já existe");
+        }
+        
+        Usuario usuario = new Usuario();
+        usuario.setUsername(username);
+        usuario.setPassword(passwordEncoder.encode(password));
+        usuario.setRole("USER");
+        
+        return usuarioRepository.save(usuario);
+    }
 }

@@ -1,6 +1,7 @@
 <div class="container">
-  <h2>Login</h2>
+  <h2>{{ modoRegistro() ? 'Cadastro' : 'Login' }}</h2>
   <p *ngIf="erro()" class="erro">{{ erro() }}</p>
+  <p *ngIf="sucesso()" class="sucesso">{{ sucesso() }}</p>
   <div class="form-group">
     <label for="username">Usuário</label>
     <input type="text" id="username" [ngModel]="username()" (ngModelChange)="username.set($event)" name="username" required>
@@ -9,5 +10,10 @@
     <label for="password">Senha</label>
     <input type="password" id="password" [ngModel]="password()" (ngModelChange)="password.set($event)" name="password" required>
   </div>
-  <button (click)="login()">Entrar</button>
+  <button *ngIf="!modoRegistro()" (click)="login()">Entrar</button>
+  <button *ngIf="modoRegistro()" (click)="registro()">Cadastrar</button>
+  <p class="alternar">
+    <a *ngIf="!modoRegistro()" (click)="toggleModo()">Não tem conta? Cadastre-se</a>
+    <a *ngIf="modoRegistro()" (click)="toggleModo()">Já tem conta? Entre</a>
+  </p>
 </div>

@@ -2,6 +2,7 @@ package com.leitorpdf.controller;
 
 import com.leitorpdf.dto.LoginRequest;
 import com.leitorpdf.dto.LoginResponse;
+import com.leitorpdf.dto.RegistroRequest;
 import com.leitorpdf.model.Usuario;
 import com.leitorpdf.service.AuthService;
 import org.springframework.http.ResponseEntity;
@@ -29,5 +30,15 @@ public class AuthController {
         }
         
         return ResponseEntity.ok(new LoginResponse(false, null, null, "Usuário ou senha inválidos"));
+    }
+
+    @PostMapping("/registro")
+    public ResponseEntity<LoginResponse> registro(@RequestBody RegistroRequest request) {
+        try {
+            Usuario usuario = authService.registro(request.getUsername(), request.getPassword());
+            return ResponseEntity.ok(new LoginResponse(true, usuario.getUsername(), usuario.getRole(), "Cadastro realizado com sucesso"));
+        } catch (RuntimeException e) {
+            return ResponseEntity.ok(new LoginResponse(false, null, null, e.getMessage()));
+        }
     }
 }

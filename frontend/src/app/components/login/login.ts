@@ -17,6 +17,14 @@ export class LoginComponent {
   username = signal('');
   password = signal('');
   erro = signal('');
+  sucesso = signal('');
+  modoRegistro = signal(false);
+
+  toggleModo() {
+    this.modoRegistro.update(v => !v);
+    this.erro.set('');
+    this.sucesso.set('');
+  }
 
   login() {
     this.erro.set('');
@@ -29,6 +37,28 @@ export class LoginComponent {
         if (response.success) {
           this.authService.setSessao(response);
           this.router.navigate(['/listar']);
+        } else {
+          this.erro.set(response.message);
+        }
+      },
+      error: () => {
+        this.erro.set('Erro ao conectar com o servidor');
+      }
+    });
+  }
+
+  registro() {
+    this.erro.set('');
+    this.sucesso.set('');
+    
+    this.authService.registro({
+      username: this.username(),
+      password: this.password()
+    }).subscribe({
+      next: (response) => {
+        if (response.success) {
+          this.sucesso.set(response.message);
+          this.modoRegistro.set(false);
         } else {
           this.erro.set(response.message);
         }

@@ -26,6 +26,10 @@ export class AuthService {
     return this.http.post<LoginResponse>(`${this.apiUrl}/login`, credentials);
   }
 
+  registro(credentials: LoginRequest): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${this.apiUrl}/registro`, credentials);
+  }
+
   estaLogado(): boolean {
     return localStorage.getItem('usuario') !== null;
   }

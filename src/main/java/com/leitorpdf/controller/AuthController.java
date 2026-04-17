@@ -35,7 +35,7 @@ public class AuthController {
     @PostMapping("/registro")
     public ResponseEntity<LoginResponse> registro(@RequestBody RegistroRequest request) {
         try {
-            usuario usuario = authService.registro(request.getUsername(), request.getPassword());
+            Usuario usuario = authService.registro(request.getUsername(), request.getPassword());
             return ResponseEntity.ok(new LoginResponse(true, usuario.getId(), usuario.getUsername(), usuario.getRole(), "Cadastro realizado com sucesso"));
         } catch (RuntimeException e) {
             return ResponseEntity.ok(new LoginResponse(false, null, null, null, e.getMessage()));

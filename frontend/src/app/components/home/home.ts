@@ -35,29 +35,29 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  buscar(event?: Event) {
-    const value = event ? (event.target as HTMLInputElement).value : this.termoBusca();
-    this.termoBusca.set(value);
+  buscar() {
+  const value = this.termoBusca();
 
-    if (value.trim().length === 0) {
-      this.pdfsBuscados.set([]);
-      this.carregarUltimos();
-      return;
-    }
-
-    this.buscando.set(true);
-    this.pdfService.buscar(value).subscribe({
-      next: (data) => {
-        this.pdfsBuscados.set(data);
-        this.buscando.set(false);
-      },
-      error: (err) => {
-        console.error('Erro ao buscar PDFs:', err);
-        this.erro.set('Erro ao buscar PDFs');
-        this.buscando.set(false);
-      }
-    });
+  if (!value || value.trim().length === 0) {
+    this.pdfsBuscados.set([]);
+    this.carregarUltimos();
+    return;
   }
+
+  this.buscando.set(true);
+
+  this.pdfService.buscar(value).subscribe({
+    next: (data) => {
+      this.pdfsBuscados.set(data);
+      this.buscando.set(false);
+    },
+    error: (err) => {
+      console.error('Erro ao buscar PDFs:', err);
+      this.erro.set('Erro ao buscar PDFs');
+      this.buscando.set(false);
+    }
+  });
+}
 
   get pdfsExibir(): Pdf[] {
     if (this.termoBusca().trim().length > 0) {

@@ -11,10 +11,10 @@
     </thead>
     <tbody>
       <tr *ngFor="let pdf of pdfs()">
-        <td>{{ pdf.nome }}</td>
-        <td><a [href]="pdf.link" target="_blank">Acessar</a></td>
-        <td>{{ pdf.adicionadoPor }}</td>
-        <td>{{ pdf.dataCriacao | date:'dd/MM/yyyy HH:mm' }}</td>
+        <td data-label="Nome">{{ pdf.nome }}</td>
+        <td data-label="Link"><a [href]="pdf.link" target="_blank">Acessar</a></td>
+        <td data-label="Adicionado por">{{ pdf.adicionadoPor }}</td>
+        <td data-label="Data">{{ pdf.dataCriacao | date:'dd/MM/yyyy HH:mm' }}</td>
       </tr>
     </tbody>
   </table>

@@ -10,13 +10,13 @@
 
   <section class="ultimos-section">
     <div class="error" *ngIf="erro()">{{ erro() }}</div>
-    <div *ngIf=" termoBusca() && pdfsExibir.length === 0 && !buscando()" class="error">
+    <div *ngIf="termoBusca() && pdfsExibir.length === 0 && !buscando()" class="error">
       <p>Nenhum PDF encontrado com "{{ termoBusca() }}"</p>
     </div>
     <div *ngIf="!termoBusca()">
       <h2>Adicionados Recentemente</h2>
     </div>
-    <div *ngIf=" termoBusca()">
+    <div *ngIf="termoBusca()">
       <h2>Resultados da Busca</h2>
     </div>
     <div class="pdf-grid" *ngIf="pdfsExibir.length > 0">

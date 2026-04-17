@@ -38,10 +38,6 @@ export class HomeComponent implements OnInit {
   buscar(event: Event) {
     const value = (event.target as HTMLInputElement).value;
     this.termoBusca.set(value);
-  }
-
-  buscarEnter() {
-    const value = this.termoBusca();
 
     if (value.trim().length === 0) {
       this.pdfsBuscados.set([]);

@@ -1,0 +1,75 @@
+.inicio-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.inicio-hero {
+  text-align: center;
+  color: white;
+  padding: 40px;
+}
+
+.inicio-hero h1 {
+  font-size: 4rem;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.inicio-hero p {
+  font-size: 1.5rem;
+  margin: 10px 0 30px;
+  opacity: 0.9;
+}
+
+.inicio-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 15px 40px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s;
+}
+
+.btn-primary {
+  background: white;
+  color: #667eea;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: 2px solid white;
+}
+
+.btn-secondary:hover {
+  background: white;
+  color: #667eea;
+}
+
+@media (max-width: 768px) {
+  .inicio-hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .inicio-buttons {
+    flex-direction: column;
+  }
+  
+  .btn {
+    width: 200px;
+  }
+}

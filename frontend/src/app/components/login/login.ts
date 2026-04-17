@@ -28,7 +28,7 @@ export class LoginComponent {
       next: (response) => {
         if (response.success) {
           this.authService.setSessao(response);
-          this.router.navigate(['/listar']);
+          this.router.navigate(['/home']);
         } else {
           this.erro.set(response.message);
         }

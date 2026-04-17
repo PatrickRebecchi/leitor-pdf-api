@@ -16,11 +16,11 @@ public class PdfService {
         this.pdfRepository = pdfRepository;
     }
 
-    public Pdf criarPdf(PdfRequest request) {
+    public Pdf criarPdf(PdfRequest request, String username) {
         Pdf pdf = new Pdf();
         pdf.setNome(request.getNome());
         pdf.setLink(request.getLink());
-        pdf.setAdicionadoPor(request.getAdicionadoPor());
+        pdf.setAdicionadoPor(username);
         pdf.setDataCriacao(LocalDateTime.now());
         
         return pdfRepository.save(pdf);

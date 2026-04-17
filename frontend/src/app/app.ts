@@ -33,21 +33,3 @@ export class App {
     return this.authService.estaLogado();
   }
 }
-
-  toggleMenu() {
-    this.menuAberto.update(v => !v);
-  }
-
-  fecharMenu() {
-    this.menuAberto.set(false);
-  }
-
-  logout() {
-    this.authService.logout();
-    this.router.navigate(['/login']);
-  }
-
-  estaLogado(): boolean {
-    return this.authService.estaLogado();
-  }
-}

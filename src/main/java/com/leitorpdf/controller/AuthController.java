@@ -26,19 +26,19 @@ public class AuthController {
         
         if (usuario.isPresent()) {
             Usuario u = usuario.get();
-            return ResponseEntity.ok(new LoginResponse(true, u.getUsername(), u.getRole(), "Login bem-sucedido"));
+            return ResponseEntity.ok(new LoginResponse(true, u.getId(), u.getUsername(), u.getRole(), "Login bem-sucedido"));
         }
         
-        return ResponseEntity.ok(new LoginResponse(false, null, null, "Usuário ou senha inválidos"));
+        return ResponseEntity.ok(new LoginResponse(false, null, null, null, "Usuário ou senha inválidos"));
     }
 
     @PostMapping("/registro")
     public ResponseEntity<LoginResponse> registro(@RequestBody RegistroRequest request) {
         try {
-            Usuario usuario = authService.registro(request.getUsername(), request.getPassword());
-            return ResponseEntity.ok(new LoginResponse(true, usuario.getUsername(), usuario.getRole(), "Cadastro realizado com sucesso"));
+            usuario usuario = authService.registro(request.getUsername(), request.getPassword());
+            return ResponseEntity.ok(new LoginResponse(true, usuario.getId(), usuario.getUsername(), usuario.getRole(), "Cadastro realizado com sucesso"));
         } catch (RuntimeException e) {
-            return ResponseEntity.ok(new LoginResponse(false, null, null, e.getMessage()));
+            return ResponseEntity.ok(new LoginResponse(false, null, null, null, e.getMessage()));
         }
     }
 }

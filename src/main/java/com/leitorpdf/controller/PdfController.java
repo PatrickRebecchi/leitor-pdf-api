@@ -20,7 +20,8 @@ public class PdfController {
 
     @PostMapping
     public ResponseEntity<Pdf> criarPdf(@RequestBody PdfRequest request) {
-        Pdf pdf = pdfService.criarPdf(request);
+        String username = request.getUsername();
+        Pdf pdf = pdfService.criarPdf(request, username);
         return ResponseEntity.ok(pdf);
     }
 

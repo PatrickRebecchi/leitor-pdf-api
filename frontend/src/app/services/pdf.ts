@@ -11,6 +11,12 @@ export interface Pdf {
   adicionadoPor: string;
 }
 
+export interface PdfRequest {
+  nome: string;
+  link: string;
+  username: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -26,7 +32,7 @@ export class PdfService {
     return this.http.get<Pdf[]>(`${this.apiUrl}/ultimos?limite=${limite}`);
   }
 
-  salvar(pdf: Omit<Pdf, 'id' | 'dataCriacao'>): Observable<Pdf> {
+  salvar(pdf: PdfRequest): Observable<Pdf> {
     return this.http.post<Pdf>(this.apiUrl, pdf);
   }
 }

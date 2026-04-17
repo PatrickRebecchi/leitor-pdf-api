@@ -6,5 +6,5 @@ import lombok.Data;
 public class PdfRequest {
     private String nome;
     private String link;
-    private String adicionadoPor;
+    private String username;
 }

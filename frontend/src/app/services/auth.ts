@@ -4,13 +4,20 @@ import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
 
 export interface LoginRequest {
-  username: string;
+  email: string;
+  password: string;
+}
+
+export interface RegistroRequest {
+  email: string;
+  nome: string;
   password: string;
 }
 
 export interface LoginResponse {
   success: boolean;
-  username: string;
+  userId: number;
+  nome: string;
   role: string;
   message: string;
 }
@@ -26,7 +33,7 @@ export class AuthService {
     return this.http.post<LoginResponse>(`${this.apiUrl}/login`, credentials);
   }
 
-  registro(credentials: LoginRequest): Observable<LoginResponse> {
+  registro(credentials: RegistroRequest): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.apiUrl}/registro`, credentials);
   }
 
@@ -48,7 +55,7 @@ export class AuthService {
   }
 
   setSessao(response: LoginResponse): void {
-    localStorage.setItem('usuario', response.username);
+    localStorage.setItem('usuario', response.nome);
     localStorage.setItem('role', response.role);
   }
 }

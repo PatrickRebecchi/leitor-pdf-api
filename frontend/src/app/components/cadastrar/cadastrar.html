@@ -1,6 +1,11 @@
 <div class="container">
-  <h2>Login</h2>
+  <h2>Cadastro</h2>
   <p *ngIf="erro()" class="erro">{{ erro() }}</p>
+  <p *ngIf="sucesso()" class="sucesso">Cadastro realizado com sucesso!</p>
+  <div class="form-group">
+    <label for="nome">Nome</label>
+    <input type="text" id="nome" [ngModel]="nome()" (ngModelChange)="nome.set($event)" name="nome" required>
+  </div>
   <div class="form-group">
     <label for="email">Email</label>
     <input type="email" id="email" [ngModel]="email()" (ngModelChange)="email.set($event)" name="email" required>
@@ -9,8 +14,8 @@
     <label for="password">Senha</label>
     <input type="password" id="password" [ngModel]="password()" (ngModelChange)="password.set($event)" name="password" required>
   </div>
-  <button (click)="login()">Entrar</button>
+  <button (click)="cadastrar()">Cadastrar</button>
   <p class="alternar">
-    <a routerLink="/cadastrar">Nao tem conta? Cadastre-se</a>
+    <a routerLink="/login">Ja tem conta? Entre</a>
   </p>
 </div>

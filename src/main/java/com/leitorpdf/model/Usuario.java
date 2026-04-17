@@ -13,10 +13,13 @@ public class Usuario {
     private Long id;
     
     @Column(unique = true, nullable = false)
-    private String username;
+    private String email;
     
     @Column(nullable = false)
     private String password;
+    
+    @Column(nullable = false)
+    private String nome;
     
     @Column(nullable = false)
     private String role;

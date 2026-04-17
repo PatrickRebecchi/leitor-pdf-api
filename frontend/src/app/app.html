@@ -1,10 +1,19 @@
-<nav class="navbar" *ngIf="estaLogado()">
+<nav class="navbar">
   <a routerLink="/" class="logo">LeitorPDF</a>
-  <button class="menu-toggle" (click)="toggleMenu()">☰</button>
-  <div class="nav-links" [class.active]="menuAberto">
-    <a routerLink="/adicionar" class="nav-btn" (click)="fecharMenu()">Adicionar PDF</a>
-    <a routerLink="/listar" class="nav-btn" (click)="fecharMenu()">Listar PDFs</a>
-    <a class="nav-btn" (click)="logout()">Sair</a>
-  </div>
+  <ng-container *ngIf="estaLogado(); else naoLogado">
+    <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+    <div class="nav-links" [class.active]="menuAberto">
+      <a routerLink="/" class="nav-btn" (click)="fecharMenu()">Home</a>
+      <a routerLink="/adicionar" class="nav-btn" (click)="fecharMenu()">Adicionar PDF</a>
+      <a routerLink="/listar" class="nav-btn" (click)="fecharMenu()">Listar PDFs</a>
+      <a class="nav-btn" (click)="logout()">Sair</a>
+    </div>
+  </ng-container>
+  <ng-template #naoLogado>
+    <div class="nav-links">
+      <a routerLink="/login" class="nav-btn">Entrar</a>
+      <a routerLink="/cadastrar" class="nav-btn">Cadastrar</a>
+    </div>
+  </ng-template>
 </nav>
 <router-outlet></router-outlet>

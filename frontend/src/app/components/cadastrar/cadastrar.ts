@@ -4,31 +4,36 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-cadastrar',
   standalone: true,
   imports: [RouterLink, FormsModule],
-  templateUrl: './login.html',
-  styleUrl: './login.css'
+  templateUrl: './cadastrar.html',
+  styleUrl: './cadastrar.css'
 })
-export class LoginComponent {
+export class CadastrarComponent {
   private authService = inject(AuthService);
   private router = inject(Router);
 
   email = signal('');
+  nome = signal('');
   password = signal('');
   erro = signal('');
+  sucesso = signal(false);
 
-  login() {
+  cadastrar() {
     this.erro.set('');
     
-    this.authService.login({
+    this.authService.registro({
       email: this.email(),
+      nome: this.nome(),
       password: this.password()
     }).subscribe({
       next: (response) => {
         if (response.success) {
-          this.authService.setSessao(response);
-          this.router.navigate(['/listar']);
+          this.sucesso.set(true);
+          setTimeout(() => {
+            this.router.navigate(['/login']);
+          }, 2000);
         } else {
           this.erro.set(response.message);
         }

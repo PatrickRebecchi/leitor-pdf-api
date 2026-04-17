@@ -16,8 +16,8 @@ public class AuthService {
         this.usuarioRepository = usuarioRepository;
     }
 
-    public Optional<Usuario> authenticate(String username, String password) {
-        Optional<Usuario> usuario = usuarioRepository.findByUsername(username);
+    public Optional<Usuario> authenticate(String email, String password) {
+        Optional<Usuario> usuario = usuarioRepository.findByEmail(email);
         
         if (usuario.isPresent() && passwordEncoder.matches(password, usuario.get().getPassword())) {
             return usuario;
@@ -26,13 +26,14 @@ public class AuthService {
         return Optional.empty();
     }
 
-    public Usuario registro(String username, String password) {
-        if (usuarioRepository.findByUsername(username).isPresent()) {
-            throw new RuntimeException("Usuário já existe");
+    public Usuario registro(String email, String nome, String password) {
+        if (usuarioRepository.findByEmail(email).isPresent()) {
+            throw new RuntimeException("Email ja cadastrado");
         }
         
         Usuario usuario = new Usuario();
-        usuario.setUsername(username);
+        usuario.setEmail(email);
+        usuario.setNome(nome);
         usuario.setPassword(passwordEncoder.encode(password));
         usuario.setRole("USER");
         

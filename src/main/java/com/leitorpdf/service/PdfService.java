@@ -33,4 +33,8 @@ public class PdfService {
     public List<Pdf> listarUltimos(int limite) {
         return pdfRepository.findTop6ByOrderByDataCriacaoDesc();
     }
+
+    public List<Pdf> buscar(String termo) {
+        return pdfRepository.findByNomeContainingIgnoreCaseOrAdicionadoPorContainingIgnoreCase(termo, termo);
+    }
 }

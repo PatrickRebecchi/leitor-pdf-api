@@ -35,4 +35,8 @@ export class PdfService {
   salvar(pdf: PdfRequest): Observable<Pdf> {
     return this.http.post<Pdf>(this.apiUrl, pdf);
   }
+
+  buscar(termo: string): Observable<Pdf[]> {
+    return this.http.get<Pdf[]>(`${this.apiUrl}/buscar?termo=${encodeURIComponent(termo)}`);
+  }
 }

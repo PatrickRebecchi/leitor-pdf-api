@@ -33,4 +33,9 @@ public class PdfController {
     public ResponseEntity<List<Pdf>> listarUltimos() {
         return ResponseEntity.ok(pdfService.listarUltimos(6));
     }
+
+    @GetMapping("/buscar")
+    public ResponseEntity<List<Pdf>> buscar(@RequestParam String termo) {
+        return ResponseEntity.ok(pdfService.buscar(termo));
+    }
 }

@@ -8,4 +8,5 @@ import java.util.List;
 @Repository
 public interface PdfRepository extends JpaRepository<Pdf, Long> {
     List<Pdf> findTop6ByOrderByDataCriacaoDesc();
+    List<Pdf> findByNomeContainingIgnoreCaseOrAdicionadoPorContainingIgnoreCase(String nome, String adicionadoPor);
 }

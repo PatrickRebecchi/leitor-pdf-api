@@ -2,17 +2,25 @@
   <header class="hero">
     <h1>Biblioteca de PDFs</h1>
     <p>Centralize seus documentos PDF do Google Drive</p>
-    <div class="hero-buttons">
-      <a routerLink="/login" class="btn btn-primary">Entrar</a>
-      <a routerLink="/cadastrar" class="btn btn-secondary">Cadastrar</a>
+    <div class="search-box">
+      <input type="text" placeholder="Buscar PDF por nome ou autor..." [ngModel]="termoBusca()" (ngModelChange)="buscar($event)" (keyup.enter)="buscarEnter()">
+      <button class="search-btn" (click)="buscarEnter()">Buscar</button>
     </div>
   </header>
 
   <section class="ultimos-section">
-    <h2>Adicionados Recentemente</h2>
     <div class="error" *ngIf="erro()">{{ erro() }}</div>
-    <div class="pdf-grid" *ngIf="ultimosPdfs().length > 0">
-      <div class="pdf-card" *ngFor="let pdf of ultimosPdfs()">
+    <div *ngIf=" termoBusca() && pdfsExibir.length === 0 && !buscando()" class="error">
+      <p>Nenhum PDF encontrado com "{{ termoBusca() }}"</p>
+    </div>
+    <div *ngIf="!termoBusca()">
+      <h2>Adicionados Recentemente</h2>
+    </div>
+    <div *ngIf=" termoBusca()">
+      <h2>Resultados da Busca</h2>
+    </div>
+    <div class="pdf-grid" *ngIf="pdfsExibir.length > 0">
+      <div class="pdf-card" *ngFor="let pdf of pdfsExibir">
         <div class="pdf-icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
             <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13z"/>
@@ -24,7 +32,7 @@
         <a [href]="pdf.link" target="_blank" class="btn-access">Acessar</a>
       </div>
     </div>
-    <div class="empty-state" *ngIf="ultimosPdfs().length === 0 && !erro()">
+    <div class="empty-state" *ngIf="!termoBusca() && pdfsExibir.length === 0 && !erro()">
       <p>Nenhum PDF adicionado ainda.</p>
     </div>
   </section>

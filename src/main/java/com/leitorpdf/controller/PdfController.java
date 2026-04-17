@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/pdfs")
+@CrossOrigin
 public class PdfController {
 
     private final PdfService pdfService;

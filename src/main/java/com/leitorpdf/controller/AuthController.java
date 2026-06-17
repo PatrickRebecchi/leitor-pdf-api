@@ -25,7 +25,10 @@ public class AuthController {
         
         if (usuario.isPresent()) {
             Usuario u = usuario.get();
-            return ResponseEntity.ok(new LoginResponse(true, u.getId(), u.getNome(), u.getRole(), "Login bem-sucedido"));
+            return ResponseEntity.ok(new LoginResponse(true,
+                    u.getId(),
+                    u.getNome(),
+                    u.getRole(), "Login bem-sucedido"));
         }
         
         return ResponseEntity.ok(new LoginResponse(false, null, null, null, "Email ou senha invalidos"));
